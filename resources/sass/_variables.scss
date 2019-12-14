@@ -1,0 +1,41 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #85CAD1;
+$indigo: #6574cd;
+$purple: #8985d1;
+$pink: #f66d9b;
+$red: #d185a7;
+$orange: #f6993f;
+$yellow: #d1bf85;
+$green: #85d18c;
+$teal: #4dc0b5;
+$cyan: #85CAD1;
+
+$primary: $blue !default;
+
+// Container
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 90%
+) !default;
+
+// Card
+
+// Form
+$input-placeholder-color: #ddd !default;
+
+// Nav
+$navbar-light-color: #000 !default;
+$nav-tabs-link-active-color: #fff;
+$nav-tabs-link-active-bg: $blue;
+$nav-tabs-link-active-border-color: #ccc #ccc $nav-tabs-link-active-bg !default;
+

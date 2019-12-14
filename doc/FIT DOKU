@@ -1,0 +1,113 @@
+FIT
+
+mutation open_kasir{
+  OpenCashierSession(balance:100000 user_id:1 org_id:1 department:"FO")
+}
+
+1. MAKE RESERVATION
+
+mutation make_reservation_fit{
+  StoreBooking(org_id:1 user_id:1 cp_name:"CHELSY" cp_phone:"089654562911" ci_date:"2019-11-22" co_date:"2019-11-23" deposit_instruction:"CASH" min_deposit:20000 lines:[{room_type_id:2}, {room_type_id:2}]){
+    id
+  }
+}
+
+
+2. BAYAR DEPO
+
+mutation bayar_depo{
+  StoreReceipt(org_id:1 guest_name:"CHELSY" ref_id:1 ref_type:"BOOKING" type:"OFFICIAL_RECEIPT" method:"CASH" lines:[{description:"DEPOSIT" amount:20000}]) {
+    id
+  }
+}
+
+
+3. BATAL SALAH SATU KAMAR
+
+3A. CHECK BIAYA BATAL
+mutation check_cancellation_fee{
+  CheckFee(reception_id:1 reception_line_ids:[1] mode:"cancel"){
+    description
+    amount
+  }
+}
+
+3B. PEMBATALAN
+
+mutation cancel_half_reservation_fit{
+  StoreBooking(id:1 org_id:1 user_id:1 cp_name:"CHELSY" cp_phone:"089654562911" ci_date:"2019-11-22" co_date:"2019-11-23" deposit_instruction:"CASH" min_deposit:20000 lines:[{id:2 room_type_id:2}]){
+    id
+  }
+}
+
+
+
+4. CHECKIN
+
+4A. CHECK BIAYA CHECKIN
+
+mutation check_early_checkin{
+  CheckFee(reception_id:1 reception_line_ids:[2] mode:"checkin"){
+    description
+    amount
+  }
+}
+
+4B. BAYAR SISA DEPOSIT [KEKURANGAN]
+
+mutation bayar_kekurangan_deposit{
+  StoreReceipt(org_id:1 guest_name:"CHELSY" ref_id:1 ref_type:"BOOKING" type:"OFFICIAL_RECEIPT" method:"CASH" lines:[{description:"DEPOSIT" amount:1825000}]) {
+    id
+  }
+}
+
+4C. CHECKIN
+
+mutation checkin_fit{
+  StoreReception(id:1 org_id:1 user_id:1 ci_date:"2019-11-22" co_date:"2019-11-23" lines:{id:2 room_type_id:2 room_id:33 ci_at:"2019-11-22 10:33:00"}){
+    id
+  }
+}
+
+
+5. ROOM SERVICE
+5A. REQUESTING ROOM SERVICE
+mutation request_room_service{
+  StoreRoomService(reception_id:1 room_id:33 user_id:1 lines:[{room_item_id:1 qty:4}]) {
+    id
+  }
+}
+
+5B. DELIVER ROOM SERVICE
+mutation deliver_rs{
+  StoreRoomServiceLine(id:1 send_at:"2019-11-22 13:00:00"  completed_at:"2019-11-22 13:20:00")
+}
+
+
+6. CHECKOUT
+
+6A. BUAT INVOICE TERPISAH [BELUM CHECKOUT]
+mutation generate_invoice_tanpa_Checkout{
+  GenerateInvoice(reception_id:1 ga_entry_ids:[2,3] deposit:1845000 point:0 billing_instruction:"CASH" billing_phone:"089654562911" billing_address:"MALANG" billing_name:"CHELSY"){
+    id
+    no
+  }
+}
+
+6B. CHECK LATE CHECKOUT
+mutation check_late_checkout{
+  CheckFee(reception_id:1 reception_line_ids:[2] mode:"checkout"){
+    description
+    amount
+  }
+}
+
+
+6D. CHECKOUT 
+
+mutation generate_invoice_dan_checkout{
+  GenerateInvoice(reception_id:1 room_ids:[33] deposit:0 point:0 billing_instruction:"CASH" billing_phone:"089654562911" billing_address:"MALANG" billing_name:"CHELSY"){
+    id
+    no
+  }
+}

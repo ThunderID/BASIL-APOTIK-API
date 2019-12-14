@@ -1,0 +1,106 @@
+code,name,group,description,is_available,price
+SHO.1912.2001,Espresso,BEVERAGE,,1,14000
+SHO.1912.2002,Espresso doppio,BEVERAGE,,1,17000
+SHO.1912.2003,Cappucino,BEVERAGE,,1,24000
+SHO.1912.2004,Cafe latte,BEVERAGE,,1,25000
+SHO.1912.2005,Americano,BEVERAGE,,1,18000
+SHO.1912.2006,Mochacino,BEVERAGE,,1,25000
+SHO.1912.2007,Long black,BEVERAGE,,1,18000
+SHO.1912.2008,Green tea latte,BEVERAGE,,1,22000
+SHO.1912.2009,Taro latte,BEVERAGE,,1,22000
+SHO.1912.2010,Karlos honey v60 method,BEVERAGE,,1,23000
+SHO.1912.2011,Aceh gayo v60 method,BEVERAGE,,1,23000
+SHO.1912.2012,Bali tabanan v60 method,BEVERAGE,,1,18000
+SHO.1912.2013,Karlos honey french press method,BEVERAGE,,1,20000
+SHO.1912.2014,Aceh gayo french press method,BEVERAGE,,1,20000
+SHO.1912.2015,Bali tabanan french press method,BEVERAGE,,1,13000
+SHO.1912.2016,Shokudo black coffee french press method,BEVERAGE,,1,10000
+SHO.1912.2017,Karlos honey tubruk method,BEVERAGE,,1,18000
+SHO.1912.2018,Aceh gayo tubruk method,BEVERAGE,,1,18000
+SHO.1912.2019,Bali tabanan tubruk method,BEVERAGE,,1,11000
+SHO.1912.2020,Shokudo black coffee tubruk method,BEVERAGE,,1,10000
+SHO.1912.2021,Cappucino shake,BEVERAGE,,1,26000
+SHO.1912.2022,Ice latte,BEVERAGE,,1,26000
+SHO.1912.2023,Coffeenergy original,BEVERAGE,,1,25000
+SHO.1912.2024,Coffeenergy hazelnut,BEVERAGE,,1,28000
+SHO.1912.2025,Coffeenergy tiramisu,BEVERAGE,,1,28000
+SHO.1912.2026,Coffeenergy caramel,BEVERAGE,,1,28000
+SHO.1912.2027,Green tea matcha,BEVERAGE,,1,26000
+SHO.1912.2028,Taro,BEVERAGE,,1,26000
+SHO.1912.2029,Choco original,BEVERAGE,,1,27000
+SHO.1912.2030,Choco hazelnut,BEVERAGE,,1,28000
+SHO.1912.2031,Choco tiramissu,BEVERAGE,,1,28000
+SHO.1912.2032,Choco caramel,BEVERAGE,,1,28000
+SHO.1912.2033,Milk shake vanilla,BEVERAGE,,1,25000
+SHO.1912.2034,Milk shake strawberry,BEVERAGE,,1,25000
+SHO.1912.2035,Milk shake chocolate,BEVERAGE,,1,25000
+SHO.1912.2036,Orange juice,BEVERAGE,,1,20000
+SHO.1912.2037,Tomato juice,BEVERAGE,,1,20000
+SHO.1912.2038,Carrot juice,BEVERAGE,,1,20000
+SHO.1912.2039,Guava juice,BEVERAGE,,1,20000
+SHO.1912.2040,Honeydew juice,BEVERAGE,,1,20000
+SHO.1912.2041,Watermelon juice,BEVERAGE,,1,20000
+SHO.1912.2042,Green healthy juice,BEVERAGE,,1,20000
+SHO.1912.2043,Booster juice,BEVERAGE,,1,20000
+SHO.1912.2044,Pink juice,BEVERAGE,,1,20000
+SHO.1912.2045,Shokudo healthy juice,BEVERAGE,,1,20000
+SHO.1912.2046,Strawberry squash,BEVERAGE,,1,20000
+SHO.1912.2047,Orange squash,BEVERAGE,,1,20000
+SHO.1912.2048,Lychee squash,BEVERAGE,,1,20000
+SHO.1912.2049,Lime squash,BEVERAGE,,1,20000
+SHO.1912.2050,Signature bajigur,BEVERAGE,,1,18000
+SHO.1912.2051,Signature bandrek,BEVERAGE,,1,18000
+SHO.1912.2052,Signature sekoteng,BEVERAGE,,1,18000
+SHO.1912.2053,Signature kirana,BEVERAGE,,1,18000
+SHO.1912.2054,Signature ginger,BEVERAGE,,1,18000
+SHO.1912.2055,Lipton series english breakfast,BEVERAGE,,1,18000
+SHO.1912.2056,Lipton series earl grey,BEVERAGE,,1,18000
+SHO.1912.2057,Lipton chamomile,BEVERAGE,,1,18000
+SHO.1912.2058,Lipton green tea mint,BEVERAGE,,1,18000
+SHO.1912.2059,Chrisantenum,BEVERAGE,,1,18000
+SHO.1912.2060,Iced strawberry tea,BEVERAGE,,1,14000
+SHO.1912.2061,Iced vanilla tea,BEVERAGE,,1,14000
+SHO.1912.2062,Iced lychee tea,BEVERAGE,,1,14000
+SHO.1912.2063,Iced grenadine tea,BEVERAGE,,1,14000
+SHO.1912.2064,Iced lemon tea,BEVERAGE,,1,14000
+SHO.1912.2065,Virgin pinnacolada,BEVERAGE,"Pineapple juice, coconut milk, vanilla ice cream",1,22000
+SHO.1912.2066,Virgin singapore sling,BEVERAGE,"Grenadine syrup, pineapple juice, orange juice, soda",1,22000
+SHO.1912.2067,Virgin banana banshee,BEVERAGE,"Banana fruits, sweet & sour mix, pandan sugar, soda",1,18000
+SHO.1912.2068,Virgin shirley tample,BEVERAGE,"Grenadine syrup, orange juice, soda",1,22000
+SHO.1912.2069,Virgin mojito,BEVERAGE,"Mint leaf, lime, sugar soda",1,15000
+SHO.1912.2070,Sakura fizz,BEVERAGE,"Strawberry fruits, mint leaf, yoghurt, pandan sugar, soda",1,26000
+SHO.1912.2071,Green canyon,BEVERAGE,"Honeydew fruit, vanilla ice cream, grenadine syrup, soda",1,24000
+SHO.1912.2072,Purple verve,BEVERAGE,"Dragon fruits, grenadine syrup, lime",1,25000
+SHO.1912.2073,Tokyo spring,BEVERAGE,"Orange juice, lychee, lime, soda",1,23000
+SHO.1912.2074,Lady rose,BEVERAGE,"Strawberry syrup, yoghurt, soda",1,24000
+SHO.1912.2075,Tonic sour,BEVERAGE,"Lime, lemon, cucumber syrup, tonic water",1,18000
+SHO.1912.2076,Coconut punch,BEVERAGE,"Coconut water, pineapple juice, orange juice, grenadine syrup",1,26000
+SHO.1912.2077,Signature shokudo tample,BEVERAGE,Made from selected herbs of traditional jamoo fusion with hibicious soda,1,22000
+SHO.1912.2078,Signature virgin chi-chi,BEVERAGE,Traditional japanese drinks fusion with indonesian flavour,1,26000
+SHO.1912.2079,Shokudo signature greges cured,BEVERAGE,Traditional medicine herbs from java fusion to enchache the great flavour,1,25000
+SHO.1912.2080,Signature apple whey,BEVERAGE,Clarified method of an apple and milk fusion,1,28000
+SHO.1912.2081,Signature sutoroberidaikiri fusion,BEVERAGE,The fusion of strawberry and sour mix in clarified method,1,25000
+SHO.1912.2082,Signature hot fusion shipon,BEVERAGE,Masterpiece of indonesian herbs serve with fusion shipon method,1,28000
+SHO.1912.2083,Signature jamoo shokudo,BEVERAGE,Combine from indonesia herbs and culture fusion,1,25000
+SHO.1912.1001,Chef's salad,FOOD,Fresh Lettuce served with sliced tenderloin and simple dressing,1,25000
+SHO.1912.1002,Oriental chicken salad,FOOD,Fruit salad combined with ja sio chicken,1,20000
+SHO.1912.1003,Caesar salad wrap,FOOD,Caesar salad wrapped in tortilla served with potato chips,1,35000
+SHO.1912.1004,Thai tom yam noodle,FOOD,Thai seafood soup served with noodle,1,35000
+SHO.1912.1005,Mushroom cream soup,FOOD,Mushroom soup with cream,1,25000
+SHO.1912.1006,Chicken ja sio noodle,FOOD,Asian noodle served with ja sio chicken,1,25000
+SHO.1912.1007,Beef teriyaki donburi,FOOD,Sliced beef cooked with teriyaki sauce served with rice and simple salad,1,45000
+SHO.1912.1008,Vietnamese pho,FOOD,Vietnamese noodle soup with meat and fresh vegetables,1,45000
+SHO.1912.1009,Sup buntut kontena,FOOD,Kontena's oxtail soup served with condiments (Soup/Fried/Grilled),1,65000
+SHO.1912.1010,Rawon iga,FOOD,Traditional east javanese rawon with beef,1,65000
+SHO.1912.1011,Nasi ulam jimbaran,FOOD,Balinese style grilled seafood and chicken served with combination of rice and traditional corn rice,1,55000
+SHO.1912.1012,Nasi goreng shokudo,FOOD,Shokudo's special fried rice,1,45000
+SHO.1912.1013,Salted egg prawn,FOOD,Fried prawn served with special salted egg sauce,1,55000
+SHO.1912.1014,Beef blackpepper with garlic butter ice,FOOD,Beef blackpepper served with fried butter ice,1,55000
+SHO.1912.1015,Chicken kung pao,FOOD,Fried chicken fillet served with kung pao sauce and rice,1,45000
+SHO.1912.1016,Kontena's spring roll,FOOD,Kontena vegetable spring roll,1,20000
+SHO.1912.1017,Wow french fries,FOOD,French fries,1,25000
+SHO.1912.1018,Fried sampler,FOOD,"Fried nugget, dumplings, fish ball, sausage and french fries",1,35000
+SHO.1912.1019,Vegetable tempura,FOOD,Fried vegetables served with sweet spicy sauce,1,25000
+SHO.1912.1020,Banana split,FOOD,Banana served with ice cream and blueberry sauce,1,25000
+SHO.1912.1021,Cinnamon rolls,FOOD,Rolled bread filled with cinnamon and melted sauce,1,25000
+SHO.1912.1022,Crepes mille feuilles,FOOD,Crepes served with ice cream,1,25000

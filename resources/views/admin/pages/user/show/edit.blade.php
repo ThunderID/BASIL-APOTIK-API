@@ -1,0 +1,1 @@
+@include('admin.components.user.form', ['user' => $user, 'action_url' => route('user.form.post', ['id' => $user->id])])

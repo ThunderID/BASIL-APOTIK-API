@@ -1,0 +1,84 @@
+OTA
+
+mutation open_kasir{
+  OpenCashierSession(balance:100000 user_id:1 org_id:1 department:"FO")
+}
+
+1. MAKE RESERVATION
+
+mutation make_reservation_ota{
+  StoreBooking(org_id:1 user_id:1 partner_id:1 cp_name:"CHELSY" cp_phone:"089654562911" ci_date:"2019-11-20" co_date:"2019-11-21" deposit_instruction:"ACCOUNT_PAYABLE" min_deposit:0 lines:[{room_type_id:2}, {room_type_id:2}]){
+    id
+  }
+}
+
+2. BATAL SALAH SATU KAMAR
+
+2A. CHECK BIAYA BATAL
+mutation check_cancellation_fee{
+  CheckFee(reception_id:2 reception_line_ids:[3] mode:"cancel"){
+    description
+    amount
+  }
+}
+
+2B. PEMBATALAN
+
+mutation cancel_half_reservation_ota{
+  StoreBooking(id:2 org_id:1 user_id:1 cp_name:"CHELSY" cp_phone:"089654562911" ci_date:"2019-11-20" co_date:"2019-11-21" deposit_instruction:"ACCOUNT_PAYABLE" min_deposit:20000 lines:[{id:4 room_type_id:2}]){
+    id
+  }
+}
+
+
+
+3. CHECKIN
+
+3A. BUAT INVOICE KE TRAVELAGENT
+mutation invoice_ota{
+  GenerateInvoice(reception_id:1 ga_entry_ids:[7,10] deposit:0 point:0 billing_instruction:"ACCOUNT_PAYABLE" billing_phone:"089654562911" billing_address:"ONLINE" billing_name:"TRAVELOKA"){
+    id
+    no
+  }
+}
+
+
+3B. CHECK BIAYA CHECKIN
+
+mutation check_early_checkin{
+  CheckFee(reception_id:2 reception_line_ids:[4] mode:"checkin"){
+    description
+    amount
+  }
+}
+
+
+3C. CHECKIN
+
+mutation checkin_ota{
+  StoreReception(id:2 org_id:1 user_id:1 ci_date:"2019-11-20" co_date:"2019-11-21" lines:{id:4 room_type_id:2 room_id:32 ci_at:"2019-11-20 12:32:00"}){
+    id
+  }
+}
+
+4. ROOM SERVICE
+4A. REQUESTING ROOM SERVICE
+mutation request_room_service{
+  StoreRoomService(reception_id:2 room_id:32 user_id:1 lines:[{room_item_id:1 qty:4}]) {
+    id
+  }
+}
+
+4B. DELIVER ROOM SERVICE
+mutation deliver_rs{
+  StoreRoomServiceLine(id:3 send_at:"2019-11-20 13:00:00"  completed_at:"2019-11-20 13:20:00")
+}
+
+
+5. CHECKOUT DAN BAYAR ROOM SERVICE
+mutation generate_invoice_dan_checkout{
+  GenerateInvoice(reception_id:2 room_ids:[32] deposit:0 point:0 billing_instruction:"CASH" billing_phone:"089654562911" billing_address:"MALANG" billing_name:"CHELSY"){
+    id
+    no
+  }
+}
