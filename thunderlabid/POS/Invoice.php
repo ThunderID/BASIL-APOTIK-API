@@ -96,12 +96,19 @@ class Invoice extends Model
 		$rules['discount']           = ['nullable', 'numeric', 'gte:0'];
 		$rules['tax']                = ['required', 'numeric', 'gte:0'];
 		$rules['lines']              = ['required', 'array'];
-		$rules['lines.*.product_id'] = ['required'];
-		$rules['lines.*.code']       = ['required', 'string'];
-		$rules['lines.*.name']       = ['required', 'string'];
-		$rules['lines.*.qty']        = ['required', 'numeric', 'gt:0'];
+		$rules['lines.*.description']= ['required'];
+		$rules['lines.*.qty']        = ['required', 'numeric', 'min:0'];
 		$rules['lines.*.price']      = ['required', 'numeric', 'min:0'];
 		$rules['lines.*.discount']   = ['required', 'numeric', 'min:0', 'lte:lines.*.price'];
+
+		$rules['lines.*.contains'] 	 = ['required'];
+		$rules['lines.*.contains.*.product_id']  = ['required', 'int'];
+		$rules['lines.*.contains.*.code']  = ['required', 'string'];
+		$rules['lines.*.contains.*.name']  = ['required', 'string'];
+		$rules['lines.*.contains.*.qty']   = ['required', 'numeric', 'gt:0'];
+		$rules['lines.*.contains.*.price']      = ['required', 'numeric', 'min:0'];
+		$rules['lines.*.contains.*.discount']   = ['required', 'numeric', 'min:0', 'lte:lines.*.contains.*.price'];
+		
 		$rules['cancelled_at']       = ['nullable', 'date'];
 		
 		return $rules;

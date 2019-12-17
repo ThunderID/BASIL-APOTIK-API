@@ -10,7 +10,7 @@ use Thunderlabid\POS\Traits\GraphQL\Type\SoftDeleteGQLTypeTrait;
 use Thunderlabid\POS\Traits\GraphQL\Type\TimestampGQLTypeTrait;
 use Thunderlabid\POS\Traits\GraphQL\Type\HasUUIDGQLTypeTrait;
 
-class IInvoiceLineType extends GraphQLType {
+class IInvoiceContainType extends GraphQLType {
 
     use SoftDeleteGQLTypeTrait;
     use TimestampGQLTypeTrait;
@@ -19,17 +19,18 @@ class IInvoiceLineType extends GraphQLType {
     protected $inputObject = true;
 
     protected $attributes = [
-        'name'          => 'POSIInvoiceLine',
+        'name'          => 'POSIInvoiceContain',
     ];
 
     public function fields()
     {
         return [
-            'description'=> ['type' => Type::string()],
+            'product_id' => ['type' => Type::Int()],
+            // 'code'       => ['type' => Type::string()],
+            // 'name'       => ['type' => Type::string()],
             'qty'        => ['type' => Type::float()],
-            'price'      => ['type' => Type::float()],
-            'discount'   => ['type' => Type::float()],
-            'contains'   => ['type' => Type::listof(GraphQL::type('POSIInvoiceContain'))],
+            // 'price'      => ['type' => Type::float()],
+            // 'discount'   => ['type' => Type::float()],
 
             /*----------  RELATION  ----------*/
             

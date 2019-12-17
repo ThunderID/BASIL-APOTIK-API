@@ -23,12 +23,11 @@ class InvoiceLineType extends GraphQLType {
     public function fields()
     {
         return [
-            'product_id' => ['type' => Type::Int()],
-            'code'       => ['type' => Type::string()],
             'name'       => ['type' => Type::string()],
             'qty'        => ['type' => Type::float()],
             'price'      => ['type' => Type::float()],
             'discount'   => ['type' => Type::float()],
+            'contains'   => ['type' => Type::listof(GraphQL::type('POSInvoiceContain'))],
 
             /*----------  RELATION  ----------*/
             

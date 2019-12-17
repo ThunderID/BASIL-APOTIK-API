@@ -63,13 +63,14 @@ class AppServiceProvider extends ServiceProvider
         \App\Org::observe(new \App\Observers\Org\CannotChangeOrgGroup);
         // \App\Org::observe(new \App\Observers\Org\SetDefaultOrgSetting);
         \App\Org::observe(new \App\Observers\WMS\Warehouse\SetDefaultWarehouse);
+        \App\Org::observe(new \App\Observers\POS\POSPoint\SetDefaultPOSPoint);
 
         // POS CASHIER
         \Thunderlabid\POS\Invoice::observe(new \App\Observers\POS\Invoice\SetNo);
         \Thunderlabid\POS\Invoice::observe(new \Thunderlabid\POS\Observer\InvoiceObserver);
         \Thunderlabid\POS\Invoice::observe(new \App\Observers\POS\Invoice\SetTax);
         \Thunderlabid\POS\Settlement::observe(new \App\Observers\POS\Settlement\SetNo);
-        \Thunderlabid\POS\Settlement::observe(new \App\Observers\POS\CashierLogFromSettlement);
+        // \Thunderlabid\POS\Settlement::observe(new \App\Observers\POS\CashierLogFromSettlement);
 
         // PURCHASING
         \App\Models\Purchasing\Invoice::observe(new \App\Observers\Purchasing\Invoice\SetNo);

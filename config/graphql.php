@@ -116,7 +116,7 @@ return [
                 // GLOBAL
                 'CashierSessions'   => Thunderlabid\Cashier\GraphQL\Query\CashierSessions::class,
                 // POS
-                // 'POSPoints'         => App\GraphQL\Query\POS\POSPoint::class,
+                'POSPoints'         => App\GraphQL\Query\POS\POSPoint::class,
                 // 'POSProducts'       => App\GraphQL\Query\POS\Product::class,
                 // 'POSProductPrices'  => App\GraphQL\Query\POS\Price::class,
                 'POSInvoices'       => App\GraphQL\Query\POS\Invoice::class,
@@ -243,7 +243,9 @@ return [
         // 'POSPrice'            => Thunderlabid\POS\GraphQL\Product\Type\PriceType::class,
         'POSInvoice'          => Thunderlabid\POS\GraphQL\Invoice\Type\InvoiceType::class,
         'POSInvoiceLine'      => Thunderlabid\POS\GraphQL\Invoice\Type\InvoiceLineType::class,
+        'POSInvoiceContain'   => Thunderlabid\POS\GraphQL\Invoice\Type\InvoiceContainType::class,
         'POSIInvoiceLine'     => Thunderlabid\POS\GraphQL\Invoice\Type\IInvoiceLineType::class,
+        'POSIInvoiceContain'  => Thunderlabid\POS\GraphQL\Invoice\Type\IInvoiceContainType::class,
         'POSSettlement'       => Thunderlabid\POS\GraphQL\Settlement\Type\SettlementType::class,
         // WMS
         'WMSWarehouse'        => Thunderlabid\WMS\GraphQL\Warehouse\Type\WarehouseType::class,

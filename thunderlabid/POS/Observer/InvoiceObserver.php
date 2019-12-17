@@ -15,36 +15,37 @@ class InvoiceObserver
 	public function saving(Invoice $invoice)
 	{
 		/*----------  Check if Product Exist & Available  ----------*/
-		$product_ids = Arr::pluck($invoice->lines, ['product_id']);
-		$products = app()->make(Product::class)->find($product_ids);
-
 		$errors = [];
 		$lines = $invoice->lines;
 		foreach ($lines as $k => $line)
 		{
-			$product = $products->firstWhere('id', $line['product_id']); 
-			if (!$product)
-			{
-				$errors["lines.$k.product_id"][] = 'exists';
-			}
-			elseif (!$product->is_available)
-			{
-				$errors["lines.$k.product_id"][] = 'invalid:NOT_AVAILABLE';
-			}
-			elseif (!$product->price)
-			{
-				$errors["lines.$k.product_id"][] = 'invalid:HAS_NO_PRICE';
-			}
-			else
-			{
-				/*----------  Autofill Product Name, Price & Discount  ----------*/
-				$lines[$k]['code']     = $product->code;
-				$lines[$k]['name']     = $product->name;
-				$lines[$k]['price']    = $product->price->price;
-				if($line['discount'] < 0){
-					$lines[$k]['discount'] = $product->price->discount;
-				}else{
-					$lines[$k]['discount'] = $line['discount'];
+			$product_ids = Arr::pluck($line['contains'], ['product_id']);
+			$products = app()->make(Product::class)->find($product_ids);
+			foreach ($line['contains'] as $k2 => $contain){
+				$product = $products->firstWhere('id', $contain['product_id']); 
+				if (!$product)
+				{
+					$errors["lines.$k.contains.$k2.product_id"][] = 'exists';
+				}
+				// elseif (!$product->is_available)
+				// {
+				// 	$errors["lines.$k.contains.$k2.product_id"][] = 'invalid:NOT_AVAILABLE';
+				// }
+				elseif (!$product->price)
+				{
+					$errors["lines.$k.contains.$k2.product_id"][] = 'invalid:HAS_NO_PRICE';
+				}
+				else
+				{
+					/*----------  Autofill Product Name, Price & Discount  ----------*/
+					$lines[$k]['contains'][$k2]['code']     = $product->code;
+					$lines[$k]['contains'][$k2]['name']     = $product->name;
+					$lines[$k]['contains'][$k2]['price']    = $product->price->price;
+					// if($contain['discount'] < 0){
+						$lines[$k]['contains'][$k2]['discount'] = $product->price->discount;
+					// }else{
+					// 	$lines[$k]['contains'][$k2]['discount'] = $contain['discount'];
+					// }
 				}
 			}
 		}
