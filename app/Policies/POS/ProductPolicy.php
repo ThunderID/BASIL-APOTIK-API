@@ -42,12 +42,12 @@ class ProductPolicy
      */
     public function create(User $user, Product $product)
     {
-        $org  = $product->pos_point->org;
+        $org  = $product->org;
         if (!$org) return false;
 
         if ($org->org_group->owner_id == $user->id) return true;
 
-        $work = $user->works_in_hotel->firstWhere('org_id', '=', $product->pos_point->org_id);
+        $work = $user->works_in_org->firstWhere('org_id', '=', $product->org_id);
         if ($work && array_intersect($work->scopes, ['*', 'POS*', 'POS.PRODUCT*']))
         {
             return true;
@@ -67,12 +67,12 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        $org  = $product->pos_point->org;
+        $org  = $product->org;
         if (!$org) return false;
 
         if ($org->org_group->owner_id == $user->id) return true;
 
-        $work = $user->works_in_hotel->firstWhere('org_id', '=', $product->pos_point->org_id);
+        $work = $user->works_in_org->firstWhere('org_id', '=', $product->org_id);
         if ($work && array_intersect($work->scopes, ['*', 'POS*', 'POS.PRODUCT*']))
         {
             return true;
@@ -92,12 +92,12 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        $org  = $product->pos_point->org;
+        $org  = $product->org;
         if (!$org) return false;
 
         if ($org->org_group->owner_id == $user->id) return true;
 
-        $work = $user->works_in_hotel->firstWhere('org_id', '=', $product->pos_point->org_id);
+        $work = $user->works_in_org->firstWhere('org_id', '=', $product->org_id);
         if ($work && array_intersect($work->scopes, ['*', 'POS*', 'POS.PRODUCT*']))
         {
             return true;

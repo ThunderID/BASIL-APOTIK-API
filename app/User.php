@@ -10,8 +10,6 @@ use Hash;
 
 use Illuminate\Validation\ValidationException;
 
-use Thunderlabid\Restaurant\Order;
-
 class User extends Authenticatable
 {
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -81,11 +79,7 @@ class User extends Authenticatable
         return $this->hasManyThrough(Org::class, OrgGroup::class, 'owner_id', 'org_group_id')->orderBy('name');
     }
 
-    public function orders() {
-        return $this->hasMany(Order::class);
-    }
-
-    public function works_in_hotel()
+    public function works_in_org()
     {
         return $this->hasMany(UserRole::class, 'user_id')
         ->where(function($q){
@@ -94,7 +88,7 @@ class User extends Authenticatable
         });
     }
 
-    // public function all_works_in_hotel()
+    // public function all_works_in_org()
     // {
     //     return $this->hasMany(Work::class, 'user_id')
     //     ->where('org_type', '=', get_class(app()->make(Org::class)));

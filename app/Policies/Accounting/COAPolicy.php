@@ -47,7 +47,7 @@ class COAPolicy
 
         if ($org->org_group->owner_id == $user->id) return true;
 
-        $work = $user->works_in_hotel->firstWhere('org_id', '=', $coa->org_id);
+        $work = $user->works_in_org->firstWhere('org_id', '=', $coa->org_id);
         if ($work && array_intersect($work->scopes, ['*', 'ACCOUNTING*', 'ACCOUNTING.COA']))
         {
             return true;
@@ -72,7 +72,7 @@ class COAPolicy
 
         if ($org->org_group->owner_id == $user->id) return true;
 
-        $work = $user->works_in_hotel->firstWhere('org_id', '=', $coa->org_id);
+        $work = $user->works_in_org->firstWhere('org_id', '=', $coa->org_id);
         if ($work && array_intersect($work->scopes, ['*', 'ACCOUNTING*', 'ACCOUNTING.COA']))
         {
             return true;
@@ -97,7 +97,7 @@ class COAPolicy
 
         if ($org->org_group->owner_id == $user->id) return true;
         
-        $work = $user->works_in_hotel->firstWhere('org_id', '=', $coa->org_id);
+        $work = $user->works_in_org->firstWhere('org_id', '=', $coa->org_id);
         if ($work && array_intersect($work->scopes, ['*', 'ACCOUNTING*', 'ACCOUNTING.COA']))
         {
             return true;

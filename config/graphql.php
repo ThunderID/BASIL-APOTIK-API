@@ -107,6 +107,7 @@ return [
                 'Partners'          => App\GraphQL\Query\Partners::class,
                 'UserRoles'         => App\GraphQL\Query\UserRoles::class,
                 'Products'          => App\GraphQL\Query\Products::class,
+                'ProductPrices'     => App\GraphQL\Query\ProductPrices::class,
 
                 // PURCHASING
                 'PurchasingInvoices'    => App\GraphQL\Query\Purchasing\PurchasingInvoices::class,
@@ -115,8 +116,9 @@ return [
                 // GLOBAL
                 'CashierSessions'   => Thunderlabid\Cashier\GraphQL\Query\CashierSessions::class,
                 // POS
-                'POSPoints'         => App\GraphQL\Query\POS\POSPoint::class,
-                'POSProducts'       => App\GraphQL\Query\POS\Product::class,
+                // 'POSPoints'         => App\GraphQL\Query\POS\POSPoint::class,
+                // 'POSProducts'       => App\GraphQL\Query\POS\Product::class,
+                // 'POSProductPrices'  => App\GraphQL\Query\POS\Price::class,
                 'POSInvoices'       => App\GraphQL\Query\POS\Invoice::class,
                 'POSSettlements'    => App\GraphQL\Query\POS\Settlement::class,
                 ///////////////////////CHECKER///////////////////////
@@ -126,7 +128,12 @@ return [
                 'SubsidiaryCOAs'        => App\GraphQL\Query\Accounting\SubsidiaryCOA::class,
                 'JournalEntrys'         => App\GraphQL\Query\Accounting\JournalEntry::class,
 
-                // STATISTICS
+                // WMS
+                'WMSWarehouses'     => App\GraphQL\Query\WMS\Warehouse::class,
+                'WMSProducts'       => App\GraphQL\Query\WMS\Product::class,
+                'WMSStockCards'     => App\GraphQL\Query\WMS\StockCard::class,
+                'WMSGDNs'           => App\GraphQL\Query\WMS\GDN::class,
+                'WMSGRNs'           => App\GraphQL\Query\WMS\GRN::class,
             ],
             'mutation' => [
                 // GLOBAL
@@ -151,23 +158,33 @@ return [
                 'StoreOrgSetting'           => App\GraphQL\Mutation\StoreOrgSetting::class,
                 //  PURCHASING
                 'StorePurchasingInvoice'    => App\GraphQL\Mutation\Purchasing\StorePurchasingInvoice::class,
+                'VoidPurchasingInvoice'     => App\GraphQL\Mutation\Purchasing\DeletePurchasingInvoice::class,
                 ///////////////////////CASHIER///////////////////////
                 // GLOBAL
                 'OpenCashierSession'    => Thunderlabid\Cashier\GraphQL\Mutation\OpenCashierSession::class,
                 'CloseCashierSession'   => Thunderlabid\Cashier\GraphQL\Mutation\CloseCashierSession::class,
                 // POS
-                'POSStorePoint'         => App\GraphQL\Mutation\POS\POSPoint\Store::class,
-                'POSDeletePoint'        => App\GraphQL\Mutation\POS\POSPoint\Delete::class,
-                'POSStoreProduct'       => App\GraphQL\Mutation\POS\Product\Store::class,
-                'POSDeleteProduct'      => App\GraphQL\Mutation\POS\Product\Delete::class,
-                'POSAddPrice'           => App\GraphQL\Mutation\POS\Product\Price\Add::class,
-                'POSRemovePrice'        => App\GraphQL\Mutation\POS\Product\Price\Delete::class,
+                // 'POSStorePoint'         => App\GraphQL\Mutation\POS\POSPoint\Store::class,
+                // 'POSDeletePoint'        => App\GraphQL\Mutation\POS\POSPoint\Delete::class,
+                // 'POSStoreProduct'       => App\GraphQL\Mutation\POS\Product\Store::class,
+                // 'POSDeleteProduct'      => App\GraphQL\Mutation\POS\Product\Delete::class,
+                'StoreProductPrice'     => App\GraphQL\Mutation\StoreProductPrice::class,
+                'DeleteProductPrice'    => App\GraphQL\Mutation\DeleteProductPrice::class,
                 'POSStoreInvoice'       => App\GraphQL\Mutation\POS\Invoice\Store::class,
                 'POSDeleteInvoice'      => App\GraphQL\Mutation\POS\Invoice\Delete::class,
                 'POSStoreSettlement'    => App\GraphQL\Mutation\POS\Settlement\Store::class,
                 'POSDeleteSettlement'   => App\GraphQL\Mutation\POS\Settlement\Delete::class,
-                // RESTO
                 // WMS
+                'WMSStoreWarehouse'     => App\GraphQL\Mutation\WMS\Warehouse\Store::class,
+                'WMSDeleteWarehouse'    => App\GraphQL\Mutation\WMS\Warehouse\Delete::class,
+                'WMSStoreProduct'       => App\GraphQL\Mutation\WMS\Product\Store::class,
+                'WMSDeleteProduct'      => App\GraphQL\Mutation\WMS\Product\Delete::class,
+                'WMSStoreStockCard'     => App\GraphQL\Mutation\WMS\StockCard\Store::class,
+                'WMSDeleteStockCard'    => App\GraphQL\Mutation\WMS\StockCard\Delete::class,
+                'WMSStoreGDN'           => App\GraphQL\Mutation\WMS\GDN\Store::class,
+                'WMSVoidGDN'            => App\GraphQL\Mutation\WMS\GDN\Delete::class,
+                'WMSStoreGRN'           => App\GraphQL\Mutation\WMS\GRN\Store::class,
+                'WMSVoidGRN'            => App\GraphQL\Mutation\WMS\GRN\Delete::class,
                 ///////////////////////HK///////////////////////
                 ///////////////////////CHECKER///////////////////////
                 ///////////////////////ACCOUNTANT///////////////////////
@@ -207,6 +224,7 @@ return [
         'Bio'                 => App\GraphQL\Type\Bio::class,
         'Role'                => App\GraphQL\Type\Role::class,
         'Product'             => App\GraphQL\Type\Product::class,
+        'Price'               => App\GraphQL\Type\Price::class,
 
         // PURCHASING
         'PurchasingInvoice'     => App\GraphQL\Type\Purchasing\PurchasingInvoice::class,
@@ -221,14 +239,23 @@ return [
         // POS
         'POSPoint'            => Thunderlabid\POS\GraphQL\POSPoint\Type\POSPointType::class,
         'POSPointSetting'     => Thunderlabid\POS\GraphQL\POSPoint\Type\POSPointSettingType::class,
-        'POSProduct'          => Thunderlabid\POS\GraphQL\Product\Type\ProductType::class,
-        'POSPrice'            => Thunderlabid\POS\GraphQL\Product\Type\PriceType::class,
+        // 'POSProduct'          => Thunderlabid\POS\GraphQL\Product\Type\ProductType::class,
+        // 'POSPrice'            => Thunderlabid\POS\GraphQL\Product\Type\PriceType::class,
         'POSInvoice'          => Thunderlabid\POS\GraphQL\Invoice\Type\InvoiceType::class,
         'POSInvoiceLine'      => Thunderlabid\POS\GraphQL\Invoice\Type\InvoiceLineType::class,
         'POSIInvoiceLine'     => Thunderlabid\POS\GraphQL\Invoice\Type\IInvoiceLineType::class,
         'POSSettlement'       => Thunderlabid\POS\GraphQL\Settlement\Type\SettlementType::class,
-        // RESTO
         // WMS
+        'WMSWarehouse'        => Thunderlabid\WMS\GraphQL\Warehouse\Type\WarehouseType::class,
+        'WMSWarehouseSetting' => Thunderlabid\WMS\GraphQL\Warehouse\Type\WarehouseSettingType::class,
+        'WMSProduct'          => Thunderlabid\WMS\GraphQL\Product\Type\ProductType::class,
+        'WMSStockCard'        => Thunderlabid\WMS\GraphQL\StockCard\Type\StockCardType::class,
+        'WMSGDN'              => Thunderlabid\WMS\GraphQL\GDN\Type\GDNType::class,
+        'WMSGDNLine'          => Thunderlabid\WMS\GraphQL\GDN\Type\GDNLineType::class,
+        'WMSIGDNLine'         => Thunderlabid\WMS\GraphQL\GDN\Type\IGDNLineType::class,
+        'WMSGRN'              => Thunderlabid\WMS\GraphQL\GRN\Type\GRNType::class,
+        'WMSGRNLine'          => Thunderlabid\WMS\GraphQL\GRN\Type\GRNLineType::class,
+        'WMSIGRNLine'         => Thunderlabid\WMS\GraphQL\GRN\Type\IGRNLineType::class,
         ///////////////////////HK///////////////////////
         ///////////////////////REPORT///////////////////////
         ///////////////////////ACCOUNTANT///////////////////////

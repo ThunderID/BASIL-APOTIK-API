@@ -179,6 +179,7 @@ return [
         Thunderlabid\Cashier\CashierServiceProvider::class,
         Thunderlabid\HR\HRServiceProvider::class,
         Thunderlabid\POS\POSServiceProvider::class,
+        Thunderlabid\WMS\WMSServiceProvider::class,
         Thunderlabid\Accounting\AccountingServiceProvider::class,
     ],
 

@@ -26,6 +26,9 @@ class Product extends GraphQLType
             'unit'         => ['type' => Type::string()],
             'created_at'   => ['type' => Type::string()],
             'updated_at'   => ['type' => Type::string()],
+            
+            'price'        => ['type' => GraphQL::type('Price')],
+            'prices'       => ['type' => Type::listOf(GraphQL::type('Price'))],
         ];
     }
 }

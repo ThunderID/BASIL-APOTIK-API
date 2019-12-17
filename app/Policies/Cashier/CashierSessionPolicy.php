@@ -52,7 +52,7 @@ class CashierSessionPolicy
 
         if ($org->org_group->owner_id == $user->id) return true;
 
-        $work = $user->works_in_hotel->firstWhere('org_id', '=', $cashier_session->org_id);
+        $work = $user->works_in_org->firstWhere('org_id', '=', $cashier_session->org_id);
         if ($work && array_intersect($work->scopes, ['*', 'POS.INVOICE', 'POS.SETTLEMENT', 'RESERVATION*', 'RECEPTION*', 'OFFICIAL_RECEIPT*', 'PAID_OUT*']))
         {
             return true;
@@ -82,7 +82,7 @@ class CashierSessionPolicy
 
         if ($org->org_group->owner_id == $user->id) return true;
 
-        $work = $user->works_in_hotel->firstWhere('org_id', '=', $cashier_session->org_id);
+        $work = $user->works_in_org->firstWhere('org_id', '=', $cashier_session->org_id);
         if ($work && array_intersect($work->scopes, ['*', 'POS.INVOICE', 'POS.SETTLEMENT', 'RESERVATION*', 'RECEPTION*', 'OFFICIAL_RECEIPT*', 'PAID_OUT*']))
         {
             return true;

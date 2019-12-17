@@ -25,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         \App\Room::class        => \App\Policies\RoomPolicy::class,
         \App\UserRole::class    => \App\Policies\UserRolePolicy::class,
         \App\Product::class     => \App\Policies\ProductPolicy::class,
+        \App\Price::class       => \App\Policies\PricePolicy::class,
         \App\User::class        => \App\Policies\UserPolicy::class,
         \App\Bio::class         => \App\Policies\BioPolicy::class,
 
@@ -45,6 +46,12 @@ class AuthServiceProvider extends ServiceProvider
         \Thunderlabid\Accounting\COA::class             => \App\Policies\Accounting\COAPolicy::class,
         \Thunderlabid\Accounting\SubsidiaryCOA::class   => \App\Policies\Accounting\SubsidiaryCOAPolicy::class,
         \Thunderlabid\Accounting\JournalEntry::class    => \App\Policies\Accounting\JournalEntryPolicy::class,
+       
+        //WMS
+        \Thunderlabid\WMS\Warehouse::class      => \App\Policies\WMS\WarehousePolicy::class,
+        \Thunderlabid\WMS\GDN::class            => \App\Policies\WMS\GDNPolicy::class,
+        \Thunderlabid\WMS\GRN::class            => \App\Policies\WMS\GRNPolicy::class,
+        \Thunderlabid\WMS\StockCard::class      => \App\Policies\WMS\StockCardPolicy::class,
 
      ];
 

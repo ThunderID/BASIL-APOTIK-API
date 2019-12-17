@@ -128,8 +128,6 @@ class Users extends Query
             }
         }
 
-        $q  = $q->with(['orders.lines' => function($q){$q->wherenotnull('note');}]);
-
         return $q->paginate(
             isset($args['limit']) ? $args['limit'] : Static::LIMIT,
             '*',

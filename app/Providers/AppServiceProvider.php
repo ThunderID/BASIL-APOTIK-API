@@ -48,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
         \App\OrgGroup::observe(new ModelValidationObserver);
         \App\Partner::observe(new ModelValidationObserver);
         \App\Product::observe(new ModelValidationObserver);
+        \App\Price::observe(new ModelValidationObserver);
         
         // PURCHASING
         \App\Models\Purchasing\Invoice::observe(new ModelValidationObserver);
@@ -60,7 +61,8 @@ class AppServiceProvider extends ServiceProvider
         // \App\UserToken::observe(new \App\Observers\User\UserTokenCreatedObserver);
         // Cannot change org
         \App\Org::observe(new \App\Observers\Org\CannotChangeOrgGroup);
-        \App\Org::observe(new \App\Observers\Org\SetDefaultOrgSetting);
+        // \App\Org::observe(new \App\Observers\Org\SetDefaultOrgSetting);
+        \App\Org::observe(new \App\Observers\WMS\Warehouse\SetDefaultWarehouse);
 
         // POS CASHIER
         \Thunderlabid\POS\Invoice::observe(new \App\Observers\POS\Invoice\SetNo);
@@ -71,6 +73,7 @@ class AppServiceProvider extends ServiceProvider
 
         // PURCHASING
         \App\Models\Purchasing\Invoice::observe(new \App\Observers\Purchasing\Invoice\SetNo);
+        \App\Models\Purchasing\Invoice::observe(new \App\Observers\WMS\GRN\UpdateGRN);
 
         // AUTH - APPROVAL
         /*=============================

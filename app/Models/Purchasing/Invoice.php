@@ -61,7 +61,7 @@ class Invoice extends Model
 	// RELATIONSHIP
 	// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	public function org() {
-		return $this->belongsTo(\App\User::class);
+		return $this->belongsTo(\App\Org::class);
 	}
 
 	public function partner() {
@@ -84,7 +84,7 @@ class Invoice extends Model
 		$rules['org_id']		= ['required', 'exists:' . app()->make(\App\Org::class)->getTable() . ',id'];
 		$rules['partner_id']	= ['nullable', 'exists:' . app()->make(\App\Partner::class)->getTable() . ',id'];
 		$rules['no']			= ['nullable', 'string'];
-		$rules['issued_at']		= ['nullable', 'after_or_equal:today'];
+		$rules['issued_at']		= ['nullable', 'before_or_equal:now'];
 
 		$rules['lines']			= ['required', 'array'];
 		$rules['lines.*.product_id']	= ['required', 'numeric'];

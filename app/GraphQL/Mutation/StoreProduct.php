@@ -9,9 +9,13 @@ use Rebing\GraphQL\Support\SelectFields;
 
 use GraphQL;
 use Auth;
+
 use App\Org;
 use App\Product;
 use App\Models\Purchasing\Invoice;
+
+use Thunderlabid\WMS\GRN;
+use Thunderlabid\WMS\Warehouse;
 
 class StoreProduct extends Mutation
 {
@@ -78,6 +82,7 @@ class StoreProduct extends Mutation
 
         //SIMPAN INIT STOCK
         if((isset($args['opening_stock']) && $args['opening_stock'] > 0) && !isset($args['id'])){
+            $lines  = [];
             $inv    = Invoice::issuedToday($product->created_at)->wherenull('partner_id')->first();
             if(!$inv){
                 $inv= new Invoice;
@@ -89,6 +94,20 @@ class StoreProduct extends Mutation
             $inv->lines     = $lines;
             $inv->save();
 
+            $wh     = Warehouse::where('org_id', $inv->org_id)->first();
+            //SIMPAN DEFAULT GRN
+            $lines  = [];
+            $grn    = GRN::where('ref_id', $inv->id)->where('ref_type', get_class($inv))->first();
+            if(!$grn){
+                $grn= new GRN; 
+            }
+            $grn->date      = $inv->issued_at;
+            $grn->ref_id    = $inv->id;
+            $grn->ref_type  = get_class($inv);
+            $grn->warehouse_id  = $wh->id;
+            $lines[]= ['product_id' => $product->id, 'qty' => $args['opening_stock'], 'sku' => $product->code, 'name' => $product->name];
+            $grn->lines     = $lines;
+            $grn->save();
         }
         \DB::commit();
 
