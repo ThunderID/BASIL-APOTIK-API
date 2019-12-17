@@ -37,10 +37,10 @@ class ProductPrices extends Query
             'page'          => ['type'  => Type::Int(), 'rules' => ['integer', 'gte:1']],
             'limit'         => ['type'  => Type::Int(), 'rules' => ['integer', 'gte:1']],
 
-            'actived_at_lt'   => ['type'  => Type::String()],
-            'actived_at_lte'  => ['type'  => Type::String()],
-            'actived_at_gt'   => ['type'  => Type::String()],
-            'actived_at_gte'  => ['type'  => Type::String()],
+            'active_at_lt'   => ['type'  => Type::String()],
+            'active_at_lte'  => ['type'  => Type::String()],
+            'active_at_gt'   => ['type'  => Type::String()],
+            'active_at_gte'  => ['type'  => Type::String()],
             'order_desc'      => ['type'  => Type::boolean()],
             'order_by'        => ['type'  => Type::String()],
             'group_by_product'  => ['type'  => Type::boolean()],
@@ -66,10 +66,10 @@ class ProductPrices extends Query
             {
                 case 'product_id': $q = $q->where('product_id', $v); break;
 
-                case 'actived_at_lt':  $q = $q->where('actived_at', '<', $v); break;
-                case 'actived_at_lte': $q = $q->where('actived_at', '<=', $v); break;
-                case 'actived_at_gt':  $q = $q->where('actived_at', '>', $v); break;
-                case 'actived_at_gte': $q = $q->where('actived_at', '>=', $v); break;
+                case 'active_at_lt':  $q = $q->where('active_at', '<', $v); break;
+                case 'active_at_lte': $q = $q->where('active_at', '<=', $v); break;
+                case 'active_at_gt':  $q = $q->where('active_at', '>', $v); break;
+                case 'active_at_gte': $q = $q->where('active_at', '>=', $v); break;
 
                 case 'order_desc':   
                     if(!$v){
@@ -81,7 +81,7 @@ class ProductPrices extends Query
                         $q  = $q->selectraw('product_id')
                             ->selectraw('avg(price) as price')
                             ->selectraw('avg(discount) as discount')
-                            ->selectraw('max(actived_at) as actived_at')
+                            ->selectraw('max(active_at) as active_at')
                             ->selectraw('max(created_at) as created_at')
                             ->selectraw('max(updated_at) as updated_at')
                             ->groupby('product_id')
