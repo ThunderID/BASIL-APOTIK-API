@@ -70,6 +70,7 @@ class Products extends Query
         {
             switch ($k) 
             {
+                case 'id': $q = $q->where('id', $v); break;
                 case 'org_id': $q = $q->where('org_id', $v); break;
                 case 'code': $q = $q->where('code', 'like', $v); break;
                 case 'name': $q = $q->where('name', 'like', $v); break;
