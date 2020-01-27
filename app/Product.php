@@ -64,6 +64,15 @@ class Product extends Model
     public function stock_cards() {
         return $this->hasMany(StockCard::class);
     }
+	public function price()
+	{
+		return $this->hasOne(Price::class)->activeAtLte(now())->latest('active_at')->latest('created_at');
+	}
+
+	public function prices()
+	{
+		return $this->hasMany(Price::class)->latest('active_at')->latest('created_at');
+	}
 
 	// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// BOOT
