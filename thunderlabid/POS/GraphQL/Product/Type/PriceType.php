@@ -28,6 +28,8 @@ class PriceType extends GraphQLType {
             'active_at' => ['type' => Type::string()],
             'price'     => ['type' => Type::float()],
             'discount'  => ['type' => Type::float()],
+            'product_id'    => ['type' => Type::Int()],
+            'product'       => ['type' => GraphQL::type('Product')],
 
             /*----------  RELATION  ----------*/
             
