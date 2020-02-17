@@ -93,7 +93,7 @@ class Invoice extends Model
 		$rules['no']                 = ['nullable', Rule::unique($this->table)->ignore($this->id)];
 		$rules['date']               = ['required', 'date'];
 		$rules['customer']           = ['nullable', 'string'];
-		$rules['discount']           = ['nullable', 'numeric', 'gte:0'];
+		$rules['discount']           = ['required', 'numeric', 'gte:0'];
 		$rules['tax']                = ['required', 'numeric', 'gte:0'];
 		$rules['lines']              = ['required', 'array'];
 		$rules['lines.*.description']= ['required'];

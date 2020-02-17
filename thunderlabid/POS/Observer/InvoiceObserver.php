@@ -20,7 +20,7 @@ class InvoiceObserver
 		foreach ($lines as $k => $line)
 		{
 			$product_ids = Arr::pluck($line['contains'], ['product_id']);
-			$products = app()->make(Product::class)->find($product_ids);
+			$products = app()->make(\App\Product::class)->find($product_ids);
 			foreach ($line['contains'] as $k2 => $contain){
 				$product = $products->firstWhere('id', $contain['product_id']); 
 				if (!$product)
